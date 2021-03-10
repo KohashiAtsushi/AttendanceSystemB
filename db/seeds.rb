@@ -5,6 +5,18 @@ User.create!(name: "Sample User",
              password: "password",
              password_confirmation: "password",
              admin: true)
+             
+first_day = Date.current.prev_month.beginning_of_month
+last_day = first_day.end_of_month
+one_month = [*first_day..last_day]
+ActiveRecord::Base.transaction do
+  one_month.each do |day| 
+    Attendance.create!(user_id: 1,
+                        worked_on: day,
+                        started_at: Time.current.change(hour: 9, sec: 0),
+                        finished_at: Time.current.change(hour: 18, sec: 0))
+  end
+end
 
 60.times do |n|
   name  = Faker::Name.name
