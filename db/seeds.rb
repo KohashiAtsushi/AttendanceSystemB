@@ -13,12 +13,12 @@ ActiveRecord::Base.transaction do
   one_month.each do |day| 
     Attendance.create!(user_id: 1,
                         worked_on: day,
-                        started_at: Time.current.change(hour: 9, sec: 0),
-                        finished_at: Time.current.change(hour: 18, sec: 0))
+                        started_at: Time.current.change(hour: 9, min: 59),
+                        finished_at: Time.current.change(hour: 18, min: 0))
   end
 end
 
-60.times do |n|
+2.times do |n|
   name  = Faker::Name.name
   email = "sample-#{n+1}@email.com"
   password = "password"
