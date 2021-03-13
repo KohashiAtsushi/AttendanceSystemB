@@ -22,7 +22,8 @@
     </tr>
   </table>
 </div>
-<div class="btn-users-show">
+<div>
+  <%= link_to "勤怠を編集", user_attendances_path(@user, date: @first_day), class: "btn btn-default btn-attendance" %>
 </div>
 <div>
   <table class="table table-bordered table-striped table-condensed table-hover" id="table-attendances">
