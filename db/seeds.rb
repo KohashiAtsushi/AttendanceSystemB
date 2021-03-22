@@ -18,7 +18,7 @@ ActiveRecord::Base.transaction do
   end
 end
 
-2.times do |n|
+60.times do |n|
   name  = Faker::Name.name
   email = "sample-#{n+1}@email.com"
   password = "password"
