@@ -19,6 +19,11 @@ class User < ApplicationRecord
   validates :basic_time, presence: true
   validates :work_time, presence: true
   
+  # あいまい検索機能
+  def self.search(search)
+    search ? where('name LIKE ?', "%#{search}%") : all
+  end
+  
   # 渡された文字列のハッシュ値を返します。
   def User.digest(string)
     cost = 

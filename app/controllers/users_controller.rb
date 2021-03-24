@@ -1,12 +1,17 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy, :edit_basic_info, :update_basic_info]
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy, :edit_basic_info, :update_basic_info]
-  before_action :correct_user, only: [:edit, :update, :show]
+  before_action :admin_or_correct_user, only: [:edit, :update, :show]
   before_action :admin_user, only: [:destroy, :edit_basic_info, :update_basic_info, :index]
   before_action :set_one_month, only: :show
 
   def index
-    @users = User.paginate(page: params[:page])
+    @users = User.all.search(params[:search]).paginate(page: params[:page])
+    if User.count == @users.count 
+      @search = '全てのユーザー'
+    else
+      @search = format('” %s ”を含む検索結果', params[:search])
+    end
   end
 
   def show
@@ -33,7 +38,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update_attributes(user_params)
-      flash[:success] = "ユーザー情報を更新しました。"
+      flash[:success] = 'ユーザー情報を更新しました。'
       redirect_to @user
     else
       render :edit      
@@ -42,7 +47,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    flash[:success] = "#{@user.name}のデータを削除しました。"
+    flash[:success] = '#{@user.name}のデータを削除しました。'
     redirect_to users_url
   end
   
@@ -51,9 +56,9 @@ class UsersController < ApplicationController
 
   def update_basic_info
     if @user.update_attributes(basic_info_params)
-      flash[:success] = "#{@user.name}の基本情報を更新しました。"
+      flash[:success] = '#{@user.name}の基本情報を更新しました。'
     else
-      flash[:danger] = "#{@user.name}の更新は失敗しました。<br>" + @user.errors.full_messages.join("<br>")
+      flash[:danger] = '#{@user.name}の更新は失敗しました。<br>' + @user.errors.full_messages.join('<br>')
     end
     redirect_to users_url
   end
