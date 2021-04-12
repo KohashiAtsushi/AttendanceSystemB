@@ -1,5 +1,5 @@
 <%= form_with(model: @user, url: update_basic_info_user_path(@user), local: true, method: :patch) do |f| %>
-  <%= render 'shared/error_messages', object: @user %>
+  <%= render partial: 'shared/error_messages', object: @user, as: :error_check %>
   <%= f.label :name, class: "label-#{yield(:class_text)}" %>
   <p><%= @user.name %></p>
   

@@ -1,2 +1,0 @@
-class BasePointController < ApplicationController
-end
