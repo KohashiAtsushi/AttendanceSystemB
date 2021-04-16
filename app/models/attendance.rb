@@ -19,4 +19,8 @@ class Attendance < ApplicationRecord
       errors.add(:started_at, "より早い退勤時間は無効です") if started_at > finished_at
     end
   end
+
+  def self.working_now?(user_id)
+    where("user_id = ? AND started_at is NOT null AND finished_at is null ", user_id).present?
+  end
 end

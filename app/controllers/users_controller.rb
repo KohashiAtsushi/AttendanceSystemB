@@ -62,6 +62,15 @@ class UsersController < ApplicationController
     end
     redirect_to users_url
   end
+
+  def index_working
+    @users = Array.new
+    User.all.each do |user|
+      if Attendance.working_now?(user.id)
+        @users.push(user)
+      end
+    end
+  end
   
   private
 
