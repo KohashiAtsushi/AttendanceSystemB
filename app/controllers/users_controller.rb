@@ -53,7 +53,7 @@ class UsersController < ApplicationController
   
   def edit_basic_info
   end
-  
+
   def update_basic_info
     if @user.update_attributes(basic_info_params)
       flash[:success] = '#{@user.name}の基本情報を更新しました。'
@@ -63,8 +63,13 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
-  def show_working_users
-
+  def index_working
+    @users = Array.new
+    User.all.each do |user|
+      if Attendance.working_now?(user.id)
+        @users.push(user)
+      end
+    end
   end
   
   private
