@@ -257,7 +257,7 @@ module Faker
         description = Lorem.sentence
         token = Crypto.md5
         secret = Crypto.md5
-        industry = Commerce.department
+        industry = Commerce.affiliation
         url = "http://www.linkedin.com/in/#{first_name}#{last_name}"
         {
           provider: 'linkedin',

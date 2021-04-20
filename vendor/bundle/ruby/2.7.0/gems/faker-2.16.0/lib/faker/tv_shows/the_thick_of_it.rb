@@ -20,16 +20,16 @@ module Faker
         end
 
         ##
-        # Produces a department from The Thick of It.
+        # Produces a affiliation from The Thick of It.
         #
         # @return [String]
         #
         # @example
-        #   Faker::TvShows::TheThickOfIt.department #=> "Shadow Cabinet"
+        #   Faker::TvShows::TheThickOfIt.affiliation #=> "Shadow Cabinet"
         #
         # @faker.version 1.8.5
-        def department
-          fetch('the_thick_of_it.departments')
+        def affiliation
+          fetch('the_thick_of_it.affiliations')
         end
 
         ##

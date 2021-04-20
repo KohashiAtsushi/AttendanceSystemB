@@ -40,19 +40,19 @@ module Faker
       end
 
       ##
-      # Produces a random department.
+      # Produces a random affiliation.
       #
-      # @param max [Integer] Updates the maximum number of names used to generate the department name.
-      # @param fixed_amount [Boolean] Fixes the amount of departments to use instead of using a range.
+      # @param max [Integer] Updates the maximum number of names used to generate the affiliation name.
+      # @param fixed_amount [Boolean] Fixes the amount of affiliations to use instead of using a range.
       # @return [String]
       #
       # @example
-      #   Faker::Commerce.department #=> "Grocery, Health & Beauty"
-      #   Faker::Commerce.department(max: 5) #=> "Grocery, Books, Health & Beauty"
-      #   Faker::Commerce.department(max: 2, fixed_amount: true) #=> "Books & Tools"
+      #   Faker::Commerce.affiliation #=> "Grocery, Health & Beauty"
+      #   Faker::Commerce.affiliation(max: 5) #=> "Grocery, Books, Health & Beauty"
+      #   Faker::Commerce.affiliation(max: 2, fixed_amount: true) #=> "Books & Tools"
       #
       # @faker.version 1.2.0
-      def department(legacy_max = NOT_GIVEN, legacy_fixed_amount = NOT_GIVEN, max: 3, fixed_amount: false)
+      def affiliation(legacy_max = NOT_GIVEN, legacy_fixed_amount = NOT_GIVEN, max: 3, fixed_amount: false)
         warn_for_deprecated_arguments do |keywords|
           keywords << :max if legacy_max != NOT_GIVEN
           keywords << :fixed_amount if legacy_fixed_amount != NOT_GIVEN
@@ -129,7 +129,7 @@ module Faker
       private
 
       def categories(num)
-        sample(fetch_all('commerce.department'), num)
+        sample(fetch_all('commerce.affiliation'), num)
       end
 
       def merge_categories(categories)

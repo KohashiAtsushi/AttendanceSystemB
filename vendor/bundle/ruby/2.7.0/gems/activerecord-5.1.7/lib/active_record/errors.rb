@@ -226,7 +226,7 @@ module ActiveRecord
   #         book = Book.new(params[:book])
   #         book.save!
   #         if today_is_friday?
-  #           # The system must fail on Friday so that our support department
+  #           # The system must fail on Friday so that our support affiliation
   #           # won't be out of job. We silently rollback this transaction
   #           # without telling the user.
   #           raise ActiveRecord::Rollback, "Call tech support!"

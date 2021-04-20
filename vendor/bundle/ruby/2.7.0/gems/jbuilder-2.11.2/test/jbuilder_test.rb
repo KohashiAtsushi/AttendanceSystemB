@@ -383,11 +383,11 @@ class JbuilderTest < ActiveSupport::TestCase
   end
 
   test 'directly set an array nested in another array' do
-    data = [ { :department => 'QA', :not_in_json => 'hello', :names => ['John', 'David'] } ]
+    data = [ { :affiliation => 'QA', :not_in_json => 'hello', :names => ['John', 'David'] } ]
 
     result = jbuild do |json|
       json.array! data do |object|
-        json.department object[:department]
+        json.affiliation object[:affiliation]
         json.names do
           json.array! object[:names]
         end

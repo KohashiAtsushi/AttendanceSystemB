@@ -101,7 +101,7 @@ de:
       name: [rot, grün, blau, gelb, lila, weiß, schwarz, orange, rosa, grau, braun, violett, türkis, oliv, beige, ocker, sand, mocka, bordeaux, aprikose, mint-grün, magenta, gold, silber, bronze, limette, azur, pink]
 
     commerce:
-      department: ["Bücher", "Filme", "Musik", "Spiele", "Elektronik", "Computer", "Haushalt", "Garten", "Werkzeug", "Lebensmittel", "Gesundheit", "Beauty", "Spielzeug", "Kinder", "Kleinkinder", "Kleider", "Schuhe", "Schmuck", "Sport", "Outdoor", "Auto", "Industrie"]
+      affiliation: ["Bücher", "Filme", "Musik", "Spiele", "Elektronik", "Computer", "Haushalt", "Garten", "Werkzeug", "Lebensmittel", "Gesundheit", "Beauty", "Spielzeug", "Kinder", "Kleinkinder", "Kleider", "Schuhe", "Schmuck", "Sport", "Outdoor", "Auto", "Industrie"]
       product_name:
         adjective: [Kleine, Ergonomische, Rustikale, Intelligente, Wunderschöne, Unglaubliche, Fantastische, Praktische, Glatte, Grossartige, Enorme, Mittelmässige, Synergetische, Strapazierfähige, Leichtgewichtige, Aerodynamische, Haltbare]
         material: [Stahl, Holz, Beton, Plastik, Baumwoll, Granit, Gummi, Leder, Seiden, Wolle, Leinen, Marmor, Eisen, Bronze, Kupfer, Aluminium, Papier]

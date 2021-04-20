@@ -82,7 +82,7 @@ module Faker
       end
 
       ##
-      # Produces a U.S. Department of Defense Paygrade.
+      # Produces a U.S. affiliation of Defense Paygrade.
       #
       # @return [String]
       #

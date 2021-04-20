@@ -826,7 +826,7 @@ Version 2 has several `breaking changes`. We replaced positional arguments with 
 - `Faker::Code.ean(base = nil)` becomes `Faker::Code.ean(base: nil)`
 - `Faker::Code.isbn(base = nil)` becomes `Faker::Code.isbn(base: nil)`
 - `Faker::Code.nric(min_age = nil, max_age = nil)` becomes `Faker::Code.nric(min_age: nil, max_age: nil)`
-- `Faker::Commerce.department(max = nil, fixed_amount = nil)` becomes `Faker::Commerce.department(max: nil, fixed_amount: nil)`
+- `Faker::Commerce.affiliation(max = nil, fixed_amount = nil)` becomes `Faker::Commerce.affiliation(max: nil, fixed_amount: nil)`
 - `Faker::Commerce.price(range = nil, as_string = nil)` becomes `Faker::Commerce.price(range: nil, as_string: nil)`
 - `Faker::Commerce.promotion_code(digits = nil)` becomes `Faker::Commerce.promotion_code(digits: nil)`
 - `Faker::Company.polish_register_of_national_economy(length = nil)` becomes `Faker::Company.polish_register_of_national_economy(length: nil)`
