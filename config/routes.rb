@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   get 'users/index_working', to: 'users#index_working'
+  patch 'users/index_to_update', to: 'users#index_to_update'
   
   resources :users do
     member do

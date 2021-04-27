@@ -6,12 +6,8 @@ class UsersController < ApplicationController
   before_action :set_one_month, only: :show
 
   def index
-    @users = User.all.search(params[:search]).paginate(page: params[:page])
-    if User.count == @users.count 
-      @search = '全てのユーザー'
-    else
-      @search = format('” %s ”を含む検索結果', params[:search])
-    end
+    
+    @users = User.all.paginate(page: params[:page])
   end
 
   def show
@@ -40,6 +36,16 @@ class UsersController < ApplicationController
     if @user.update_attributes(user_params)
       flash[:success] = 'ユーザー情報を更新しました。'
       redirect_to @user
+    else
+      render :edit      
+    end
+  end
+
+  def index_to_update
+    user = User.find(params[:user_id])
+    if user.update_attributes(user_params)
+      flash[:success] = 'ユーザー情報を更新しました。'
+      redirect_to action: :index
     else
       render :edit      
     end
@@ -75,7 +81,8 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:name, :email, :affiliation, :password, :password_confirmation)
+      params.require(:user).permit(:name, :email, :affiliation, :employee_number, :uid, :password, :password_confirmation,
+                                   :basic_work_time ,:designated_work_start_time, :designated_work_end_time)
     end
     
     def basic_info_params
