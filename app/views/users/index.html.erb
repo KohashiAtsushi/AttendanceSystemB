@@ -3,6 +3,14 @@
 <h1>ユーザ一覧</h1>
 
 <div class="col-md-10 col-md-offset-1">
+  <%= form_tag import_users_path, multipart: true do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag "インポート", class: "col-md-2 btn btn-primary btn-#{yield(:class_text)}" %>
+  <% end %>
+</div>
+
+
+<div class="col-md-10 col-md-offset-1">
   <%= will_paginate %>
     <div id="accordion">
       <% @users.each do |user| %>

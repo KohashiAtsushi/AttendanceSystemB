@@ -6,8 +6,13 @@ class UsersController < ApplicationController
   before_action :set_one_month, only: :show
 
   def index
-    
     @users = User.all.paginate(page: params[:page])
+  end
+
+  def import
+    User.import(params[:file])
+    flash[:success] = 'ユーザー情報を追加しました。'
+    redirect_to action: :index
   end
 
   def show
