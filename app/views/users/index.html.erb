@@ -8,10 +8,9 @@
     <%= submit_tag "インポート", class: "col-md-2 btn btn-primary btn-#{yield(:class_text)}" %>
   <% end %>
 </div>
-
-
 <div class="col-md-10 col-md-offset-1">
   <%= will_paginate %>
+    <hr/>
     <div id="accordion">
       <% @users.each do |user| %>
         <div>
@@ -43,4 +42,7 @@
 </div>
 
 <!--モーダルウインドウ表示-->
+rails g model attendance_logs attendances_on:time before_started_at:time after_started_at:time before_finished_at:time after_finished_at:time user_id:index superior:string approval_on:time
+<!--rails g migration add_attendance_info_to_attendances overtime_at:time description:string superior_sign:string -->
 <!--<div id="edit-basic-info" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>-->
+
