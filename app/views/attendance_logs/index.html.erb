@@ -1,0 +1,36 @@
+<% provide(:title, "Attendance_logs") %>
+<% provide(:class_text, 'user--attendance_logs') %>
+<h1>勤怠ログ</h1>
+
+<div>
+
+
+</div>
+<div class="col-md-10 col-md-offset-1">
+  <table class='table table-bordered table-striped table-condensed table-hover' id='attendance-logs-table'>
+    <thead class='attendance-logs-thead'>
+      <tr>
+        <th>日付</th>
+        <th>変更前出社時間</th>
+        <th>変更前退社時間</th>
+        <th>変更後出社時間</th>
+        <th>変更後退社時間</th>
+        <th>指示者</th>
+        <th>承認日</th>
+      </tr>
+    </thead>
+    </tbody>
+      <% 5.times do |i| %>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+          <td>4</td>
+          <td>5</td>
+          <td>6</td>
+          <td>7</td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

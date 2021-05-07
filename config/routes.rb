@@ -20,8 +20,9 @@ Rails.application.routes.draw do
     end
 
     resources :attendances, only: :update
+    resources :attendance_logs, only: :index
   end
 
-
   resources :base_points
+  
 end

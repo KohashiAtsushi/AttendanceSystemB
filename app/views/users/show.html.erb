@@ -23,7 +23,10 @@
   </table>
 </div>
 <div>
-  <%= link_to '1ヶ月の勤怠編集へ', attendances_edit_one_month_user_path(date: @first_day), class: 'btn btn-success btn-users-show' %>
+  <%= link_to '勤怠を編集', attendances_edit_one_month_user_path(date: @first_day), class: 'btn btn-primary btn-users-show' %>
+</div>
+<div>
+  <%= link_to '勤怠修正ログ（承認済）', user_attendance_logs_path(user_id: @user.id), class: 'btn btn-primary btn-users-show' %>
 </div>
 <div>
   <table class='table table-bordered table-striped table-condensed table-hover' id='table-attendances'>
@@ -88,3 +91,7 @@
     </tfoot>  
   </table>
 </div>
+
+
+<!--モーダルウインドウ表示-->
+<!--<div id="edit-basic-info" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>-->
