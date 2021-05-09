@@ -90,6 +90,15 @@
       </tr>
     </tfoot>  
   </table>
+  <div>
+    <%= form_with model: @user do |f| %>
+
+      <%= f.collection_select :superior, @superiors.all, :name, :name, include_blank: "選択して下さい" %>
+     <!--  f.collection_select :保存先カラム名, テーブル名.all, :実際にDBに保存させるカラム名, :選択肢に用いるカラム名, include_blank: "選択して下さい" -->
+
+      <%= f.submit '送信'%>
+    <% end %>
+  </div>
 </div>
 
 

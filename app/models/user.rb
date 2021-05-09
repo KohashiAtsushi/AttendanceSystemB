@@ -26,6 +26,11 @@ class User < ApplicationRecord
     search ? where('name LIKE ?', "%#{search}%") : all
   end
 
+  # 上長全員を取得
+  def self.superior_all
+    where(superior: true)
+  end
+
   #CSVをインポートするためのメソッド
   def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|
