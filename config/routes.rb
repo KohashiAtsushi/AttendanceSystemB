@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'approval/new'
+
   root 'static_pages#top'
   get '/signup', to: 'users#new'
 
@@ -14,6 +16,7 @@ Rails.application.routes.draw do
     collection {post :import}
     member do
       get 'edit_basic_info'
+      get 'one_month_approval'
       patch 'update_basic_info'
       get 'attendances/edit_one_month'
       patch 'attendances/update_one_month'

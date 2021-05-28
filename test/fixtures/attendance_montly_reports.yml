@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  month: 2021-05-18
+  decision: 1
+  superior_id: 1
+
+two:
+  user_id: 1
+  month: 2021-05-18
+  decision: 1
+  superior_id: 1

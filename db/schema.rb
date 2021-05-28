@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210506090230) do
+ActiveRecord::Schema.define(version: 20210518102448) do
 
   create_table "attendance_logs", force: :cascade do |t|
     t.time "attendances_on"
@@ -24,6 +24,15 @@ ActiveRecord::Schema.define(version: 20210506090230) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_attendance_logs_on_user_id"
+  end
+
+  create_table "attendance_montly_reports", force: :cascade do |t|
+    t.integer "user_id"
+    t.date "month"
+    t.integer "decision"
+    t.integer "superior_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "attendances", force: :cascade do |t|
