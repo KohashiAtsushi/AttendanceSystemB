@@ -17,7 +17,7 @@ gem 'jbuilder',     '~> 2.5'
 gem 'roo'
 
 group :development, :test do
-  gem 'sqlite3', '1.3.13'
+  gem 'sqlite3', '1.4.2'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 

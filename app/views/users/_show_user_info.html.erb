@@ -1,0 +1,20 @@
+<table class='table table-bordered table-condensed user-table' id='table-attendances'>
+  <tr>
+    <td>
+      <% if !@preview %><%= link_to '←', user_path(date: @first_day.prev_month), class: 'btn btn-default' %><% end %>
+      <%= l(@first_day, format: :middle) %>　時間管理表
+      <% if !@preview %><%= link_to '→', user_path(date: @first_day.next_month), class: 'btn btn-default' %><% end %>
+    </td>
+    <td>指定勤務時間：<%= format_basic_info(@user.work_time) %></td>
+    <td colspan='3'><%= format_basic_info(@user.basic_work_time) %>　基本時間</td>
+    <td>初日　<%= l(@first_day, format: :default) %></td>
+  </tr>
+  <tr>
+    <td>所属：<%= @user.affiliation.present? ? @user.affiliation : '未所属' %></td>
+    <td>氏名：<%= @user.name %></td>
+    <td>コード</td>
+    <td></td>
+    <td>出勤日数：<%= @worked_sum %>日</td>
+    <td>締め　<%= l(@last_day, format: :default) %></td>
+  </tr>
+</table>

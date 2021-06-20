@@ -76,3 +76,31 @@
   margin: 15px 0;
   width: 30%;
 }
+
+/* 申請・承認フォーム */
+
+.label-basic-info {
+  margin-top: 5px;
+}
+
+.title-text-approval {
+  font-size: 2em;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+#table-approval {
+  th {
+    vertical-align: middle;
+    text-align: center;
+  }
+  td {
+    vertical-align: middle;
+    text-align: center;
+  }
+}
+
+.approval-table {
+  vertical-align: middle;
+  text-align: center;
+}

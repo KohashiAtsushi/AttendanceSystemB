@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy, :edit_basic_info, :update_basic_info]
-  before_action :logged_in_user, only: [:index, :edit, :update, :destroy, :edit_basic_info, :update_basic_info]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :edit_basic_info, :update_basic_info, :one_month_approval, :attendances_preview]
+  before_action :logged_in_user, only: [:index, :edit, :update, :destroy, :edit_basic_info, :update_basic_info, :one_month_approval, :attendances_preview]
   before_action :admin_or_correct_user, only: [:edit, :update, :show]
   before_action :admin_user, only: [:destroy, :edit_basic_info, :update_basic_info, :index]
-  before_action :set_one_month, only: :show
+  before_action :set_one_month, only: [:show, :attendances_preview]
+  before_action :set_show_data, only: [:show, :attendances_preview]
 
   def index
     @users = User.all.paginate(page: params[:page])
@@ -16,8 +17,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    @worked_sum = @attendances.where.not(started_at: nil).count
     @superiors = User.superior_all
+  end
+
+  def attendances_preview
+    @preview = true
   end
 
   def new
@@ -83,6 +87,10 @@ class UsersController < ApplicationController
       end
     end
   end
+
+  def one_month_approval
+    @one_month_approvals = AttendanceMonthlyReport.get_approvals(@user.id)
+  end
   
   private
 
@@ -95,4 +103,14 @@ class UsersController < ApplicationController
       params.require(:user).permit(:affiliation, :basic_work_time, :work_time)
     end
     
+    def set_show_data
+      @worked_sum = @attendances.where.not(started_at: nil).count
+      if @user.superior 
+        @one_month_approvals = AttendanceMonthlyReport.get_approvals(@user.id)
+      end
+      @attendance_monthly_report = AttendanceMonthlyReport.get_monthly_report(@user.id, @first_day)
+      if @attendance_monthly_report.nil?
+        @attendance_monthly_report = AttendanceMonthlyReport.new()
+      end
+    end
 end

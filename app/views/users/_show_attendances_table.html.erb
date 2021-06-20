@@ -1,0 +1,54 @@
+<table class='table table-bordered table-striped table-condensed table-hover' id='table-attendances'>
+  <thead>
+    <%= render 'show_table_heading.html' %>
+  </thead>
+  <tbody>
+    <% work_day_count = 0 %>
+    <% @attendances.each do |day| %>
+      <tr>
+        <td><% if !@preview %><%= link_to '残業申請', user_attendance_logs_path(user_id: @user.id), class: 'btn btn-primary' %><% end %></td>
+        <td><%= l(day.worked_on, format: :short) %></td>
+        <td><%= week_color(day.worked_on.wday) %></td>
+        <!-- 所定外勤務 -->
+        <td><%= l(day.started_at, format: :hour) if day.started_at.present? %></td>
+        <td><%= quarter_times(day.started_at) if day.started_at.present? %></td>
+        <!--出勤退勤ボタン-->
+        <td>
+          <% if (btn_text = attendance_state(day)) && !@preview %>
+            <%= link_to btn_text, user_attendance_path(@user, day), method: :patch, class: 'btn btn-default btn-attendance' %>
+          <% end %>
+        </td>
+        <td><%= l(day.finished_at, format: :hour) if day.finished_at.present? %></td>
+        <td><%= quarter_times(day.finished_at) if day.finished_at.present? %></td>
+        <td></td>
+        <td>
+          <% if day.started_at.present? && day.finished_at.present?%>
+            <%= str_times = working_quarter_times(day.started_at, day.finished_at) %>
+            <% work_day_count += 1 %>
+            <% @total_working_times = @total_working_times.to_f + str_times.to_f %>
+          <% end %>            
+        </td>
+        <td><%= day.note %></td>
+        <!-- 所定外勤務 -->
+        <td></td>
+        <td></td>
+        <td><%= day.overtime_at %></td>
+        <td><%= day.description %></td>
+        <td><%= day.superior_sign %></td>
+      </tr>
+    <% end %>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan='2'>総合勤務時間</td>
+      <td colspan='6' rowspan='2'></td>
+      <td colspan='1'>累計在社時間</td>
+      <td colspan='5' rowspan='2'></td>
+      <td colspan='2' rowspan='2'><%= "所属長承認　#{decision_to_display(@attendance_monthly_report.decision)}" %></td>
+    </tr>
+    <tr>
+      <td colspan='2'><%= format_basic_info(@user.basic_work_time).to_f  * work_day_count %></td>
+      <td colspan='1'><%= format('%.2f', @total_working_times.to_f) %></td>
+    </tr>
+  </tfoot>  
+</table>

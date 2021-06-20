@@ -10,4 +10,16 @@ module ApplicationHelper
     end
   end
   
+  def decision_to_display(decision_number = 0)
+    $decision_word[decision_number]
+  end
+
+  def week_color(week)
+    color = case week
+            when 0 then 'red'
+            when 6 then 'blue'
+            else '#000000'
+            end
+    format('<font color=\'%s\'>%s</font>', color, $days_of_the_week[week]).html_safe
+  end
 end

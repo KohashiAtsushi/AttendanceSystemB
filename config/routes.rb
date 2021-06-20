@@ -17,6 +17,8 @@ Rails.application.routes.draw do
     member do
       get 'edit_basic_info'
       get 'one_month_approval'
+      get 'one_month_approval/update_all'
+      get 'attendances_preview'
       patch 'update_basic_info'
       get 'attendances/edit_one_month'
       patch 'attendances/update_one_month'
@@ -24,6 +26,7 @@ Rails.application.routes.draw do
 
     resources :attendances, only: :update
     resources :attendance_logs, only: :index
+    resources :attendance_monthly_reports, only: [:create, :update]
   end
 
   resources :base_points

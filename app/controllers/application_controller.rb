@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
 
   $days_of_the_week = %w{日 月 火 水 木 金 土}
-  $decision = %w{なし 申請中 承認 否認}
+  $decision_word = %w{なし 申請中 承認 否認}
 
   # beforフィルター
 
@@ -50,7 +50,7 @@ class ApplicationController < ActionController::Base
 
   # 一ヶ月の勤怠の承認を確認します。 
   def set_one_month_approval
-    @one_month_approvals = AttendanceMontlyReport.applying_montly_reports(@user.id)
+    @one_month_approvals = AttendanceMonthlyReport.applying_monthly_reports(@user.id)
   end
 
 
