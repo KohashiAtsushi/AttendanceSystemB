@@ -31,7 +31,7 @@
               <% if day.started_at.present? && day.finished_at.present? %>
                 <%= working_times(day.started_at, day.finished_at) %>
               <% end %>
-            </td>
+            </td>""
             <td><%= attendance.text_field :note, class: "form-control" %></td>
           </tr>
         <% end %>

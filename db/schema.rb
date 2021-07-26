@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210606025827) do
+ActiveRecord::Schema.define(version: 20210707094308) do
 
   create_table "attendance_logs", force: :cascade do |t|
     t.time "attendances_on"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20210606025827) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "user_name"
+    t.boolean "change_flag", default: false, null: false
   end
 
   create_table "attendances", force: :cascade do |t|
@@ -67,8 +68,8 @@ ActiveRecord::Schema.define(version: 20210606025827) do
     t.string "remember_digest"
     t.boolean "admin", default: false
     t.string "affiliation"
-    t.datetime "basic_work_time", default: "2021-05-28 23:00:00"
-    t.datetime "work_time", default: "2021-05-28 22:30:00"
+    t.datetime "basic_work_time", default: "2021-07-23 23:00:00"
+    t.datetime "work_time", default: "2021-07-23 22:30:00"
     t.string "employee_number"
     t.string "uid"
     t.datetime "designated_work_start_time"

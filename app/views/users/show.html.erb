@@ -4,12 +4,7 @@
 </div>
 <!-- 上長、承認者用のリンク表示 -->
 <% if @user.superior? %>
-  <div><%= link_to "【 所属長承認申請のお知らせ 】#{@one_month_approvals.count}件の通知があります",
-     one_month_approval_user_path(@user.id), remote: true, class: "text-link--show" %></div>
-  <div><%= link_to "【 勤怠変更申請のお知らせ 】",
-     "", remote: true, class: "text-link--show" %></div>
-  <div><%= link_to "【 残業申請のお知らせ 】",
-     "", remote: true, class: "text-link--show" %></div>
+  <%= render 'show_user_superior_info.html' %>
 <% end %>
 <div>
   <%= link_to '勤怠を編集', attendances_edit_one_month_user_path(date: @first_day), class: 'btn btn-primary' %>

@@ -44,7 +44,9 @@
       <td colspan='6' rowspan='2'></td>
       <td colspan='1'>累計在社時間</td>
       <td colspan='5' rowspan='2'></td>
-      <td colspan='2' rowspan='2'><%= "所属長承認　#{decision_to_display(@attendance_monthly_report.decision)}" %></td>
+      <td colspan='2' rowspan='2'>
+        <%= approval_result(@superiors, @attendance_monthly_report) %>
+      </td>
     </tr>
     <tr>
       <td colspan='2'><%= format_basic_info(@user.basic_work_time).to_f  * work_day_count %></td>

@@ -18,6 +18,7 @@ Rails.application.routes.draw do
       get 'edit_basic_info'
       get 'one_month_approval'
       get 'one_month_approval/update_all'
+      patch 'attendance_monthly_reports/update_all'
       get 'attendances_preview'
       patch 'update_basic_info'
       get 'attendances/edit_one_month'

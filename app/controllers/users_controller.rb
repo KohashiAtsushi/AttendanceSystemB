@@ -105,12 +105,16 @@ class UsersController < ApplicationController
     
     def set_show_data
       @worked_sum = @attendances.where.not(started_at: nil).count
+      # 上長なら送られてきている承認を全件取得する。
       if @user.superior 
         @one_month_approvals = AttendanceMonthlyReport.get_approvals(@user.id)
       end
+
+      # 現在いる年月が承認されているかの情報の取得　なければnew
       @attendance_monthly_report = AttendanceMonthlyReport.get_monthly_report(@user.id, @first_day)
       if @attendance_monthly_report.nil?
         @attendance_monthly_report = AttendanceMonthlyReport.new()
       end
     end
+
 end

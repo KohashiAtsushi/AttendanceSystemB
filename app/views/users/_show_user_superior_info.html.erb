@@ -1,0 +1,16 @@
+<div class="text-link--show">
+  <% if @one_month_approvals.count != 0 %>
+    <%= link_to "【 所属長承認申請のお知らせ 】#{@one_month_approvals.count}件の通知があります",
+      one_month_approval_user_path(@user.id), remote: true %>
+  <% else %>
+    【 所属長承認申請のお知らせ 】
+  <% end %>
+</div>
+<div>
+  <%= link_to "【 勤怠変更申請のお知らせ 】",
+    "", remote: true, class: "text-link--show" %>
+    </div>
+<div>
+  <%= link_to "【 残業申請のお知らせ 】",
+    "", remote: true, class: "text-link--show" %>
+</div>

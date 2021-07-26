@@ -1,7 +1,7 @@
 <% provide(:class_text, 'approval') %>
 <% provide(:button_text, '更新') %>
 
-<%= form_with(model: @user, url: one_month_approval_update_all_user_path(), local: true, method: :patch) do |f| %>
+<%= form_with(model: @user, url: attendance_monthly_reports_update_all_user_path(), local: true, method: :patch) do |f| %>
   <div class="modal-dialog modal-lg modal-dialog-center">
     <div class="modal-content">
       <div class="modal-header">
@@ -10,8 +10,8 @@
       <div class="modal-body">
         <div class="row">
           <div class="col-md-10 col-md-offset-1">
-            <% @one_month_approvals.each do |user_approvals| %>
-              <div class="title-text-approval">【<%= user_approvals.first.user_name %>からの１ヵ月分勤怠申請】</div>
+            <% @one_month_approvals.each do |user_separate_approvals| %>
+              <div class="title-text-approval">【<%= user_separate_approvals.first.user_name %>からの１ヵ月分勤怠申請】</div>
               <table class="table table-bordered table-condensed table-hover" id="table-attendances">
                 <thead>
                   <th>月</th>
@@ -20,24 +20,28 @@
                   <th>勤怠を確認する</th>
                 </thead>
                 <tbody>
-                  <% user_approvals.each do |approval| %>
-                    <%= f.fields_for "approvals[]", approval do |approval_submit| %>
+                  <% user_separate_approvals.each do |approval| %>
+                    <%= f.fields_for "approvals[]", approval do |approval_check| %>
                       <tr>
                         <td><%= l(approval.month, format: :middle) %></td>
                         <td>
-                          <%= f.select(:decision, $decision_word, { prompt: decision_to_display(approval.decision)} ,
-                          {class: "form-control input-md"}) %>
+                          <%= approval_check.select :decision, $decision_word,
+                          {selected: decision_to_display(approval.decision)},
+                          {class: "form-control"} %>
                         </td>
-                        <td><%= f.check_box :is_check, {}, true, false %></td>
-
-                        <td><%= link_to "確認", attendances_preview_user_path(approval.user), class: "btn btn-primary", target: :_blank %></td>
+                        <td> 
+                          <%= approval_check.check_box(:change_flag, {checked: false, class: ""}, checked_value = true, unchecked_value = false ) %>
+                        </td>
+                        <td>
+                          <%= link_to "確認", attendances_preview_user_path(approval.user), class: "btn btn-primary", target: :_blank %>
+                        </td>
                       </tr>
                     <% end %>
                   <% end %>
                 </tbody>
               </table>
             <% end %>
-        <button type="button" class="col-md-4 col-md-offset-4 btn btn-primary ">変更を送信する</button>            
+            <%= f.submit "変更を送信する", class: "btn btn-primary col-md-4 col-md-offset-4" %>
           </div>
         </div>
       </div>

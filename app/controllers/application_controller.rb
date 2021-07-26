@@ -45,15 +45,6 @@ class ApplicationController < ActionController::Base
       redirect_to(root_url)
     end  
   end
-
-
-
-  # 一ヶ月の勤怠の承認を確認します。 
-  def set_one_month_approval
-    @one_month_approvals = AttendanceMonthlyReport.applying_monthly_reports(@user.id)
-  end
-
-
     
   # ページ出力前に1ヶ月分のデータの存在を確認・セットします。
   def set_one_month 
@@ -74,5 +65,10 @@ class ApplicationController < ActionController::Base
   rescue ActiveRecord::RecordInvalid
     flash[:danger] = "ページ情報の取得に失敗しました、再アクセスしてください。"
     redirect_to root_url
+  end
+
+  # 一ヶ月の勤怠の承認を確認します。 
+  def set_one_month_approval
+    @one_month_approvals = AttendanceMonthlyReport.applying_monthly_reports(@user.id)
   end
 end

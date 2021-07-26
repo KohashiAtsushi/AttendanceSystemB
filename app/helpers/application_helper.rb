@@ -10,7 +10,7 @@ module ApplicationHelper
     end
   end
   
-  def decision_to_display(decision_number = 0)
+  def decision_to_display(decision_number = 0, super_user_id = "")
     $decision_word[decision_number]
   end
 
